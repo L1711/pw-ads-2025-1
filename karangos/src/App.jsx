@@ -4,15 +4,23 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 // import './App.css'
+
 import CssBaseline from '@mui/material/CssBaseline'
 
+import { ThemeProvider } from '@mui/material/styles'
+import theme from './ui/theme'
+
 import TopBar from './ui/TopBar'
+
 function App() {
 
   return (
     <>
-      <CssBaseline/>
-      <TopBar/>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <TopBar />
+        <FooterBar/>
+      </ThemeProvider>
     </>
   )
 }
