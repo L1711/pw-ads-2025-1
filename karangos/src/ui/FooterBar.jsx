@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography'
-import LocalCafeIcon from '@mui/icons-material/LocalCafe';
+import CoffeeIcon from '@mui/icons-material/Coffee';
 
 export default function FooterBar() {
   return (
@@ -17,7 +17,8 @@ export default function FooterBar() {
       }}
     >
       <Typography variant="caption" gutterBottom>
-        Desenvolvido e mantido com <LocalCafeIcon fontSize="small" /> por <a href="mailto:professor@faustocintra.com.br">Prof. Fausto Cintra</a>
+        Desenvolvido e mantido com <CoffeeIcon fontSize="small" /> por <a
+         href="Lanealves02@gmail.com">Leilane Alves</a>
       </Typography>
     </Box>
   );
