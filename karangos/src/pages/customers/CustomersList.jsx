@@ -165,6 +165,7 @@ export default function CustomersList() {
           },
         }}
         pageSizeOptions={[5]}
+
         disableRowSelectionOnClick
       />
     </Paper>
