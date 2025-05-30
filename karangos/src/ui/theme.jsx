@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles'
 import { yellow, pink } from '@mui/material/colors'
+import { ptBR } from '@mui/x-data-grid/locales'
 
 const theme = createTheme({
   palette: {
@@ -13,10 +14,10 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: '2,5rem',
+      fontSize: '2.5rem',
       fontWeight: 'bold'
     }
   }
-})
+}, ptBR)
 
 export default theme
