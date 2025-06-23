@@ -25,7 +25,7 @@ export default function FooterBar() {
           }
         }}
       >
-        Desenvolvido e mantido com <LocalCafeIcon fontSize="small" /> por <a href="Lanealves02@gmail.com">Leilane Alves</a>
+        Desenvolvido e mantido com <LocalCafeIcon fontSize="small" /> por <a href="lanecassimiro02@gmail.com">Leilane Alves</a>
       </Typography>
     </Box>
   );

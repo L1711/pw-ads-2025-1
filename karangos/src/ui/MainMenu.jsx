@@ -55,7 +55,7 @@ export default function MainMenu() {
           component={Link}
           to="/customers"
         >
-          Listagem de clientes
+          Listagem de Veículos
         </MenuItem>
 
         <MenuItem 
@@ -63,7 +63,7 @@ export default function MainMenu() {
           component={Link}
           to="/customers/new"
         >
-          Cadastro de clientes
+          Cadastro de Veículos
         </MenuItem>
 
       </Menu>
