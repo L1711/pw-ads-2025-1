@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -67,6 +68,15 @@ export default function MainMenu() {
         </MenuItem>
 
       </Menu>
+
+      <MenuItem 
+          onClick={handleClose}
+          component={Link}
+          to="/prova/2"
+        >
+          Prova 2
+        </MenuItem>
+
     </div>
   );
 }
