@@ -12,7 +12,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle'
 
 import { feedbackWait, feedbackConfirm, feedbackNotify } from '../../ui/Feedback'
 
-export default function CarsList() {
+export default function CustomersList() {
 
   const columns = [
     { 
@@ -21,50 +21,13 @@ export default function CarsList() {
       width: 90 
     },
     {
-      field: 'brand',
-      headerName: 'Marca/Modelo',
-      width: 200,
-      renderCell: (params) => params.row.brand + '/' + params.row.model
+      field: 'name',
+      headerName: 'Nome',
+      width: 250
     },
     {
-      field: 'model',
-      headerName: 'Modelo',
-      width: 150,
-    },
-    {
-      field: 'color',
-      headerName: 'Cor',
-      width: 150
-    },
-    {
-      field: 'year_manufacture',
-      headerName: 'Ano de fabricação',
-      width: 150
-    },
-    {
-      field: 'imported',
-      headerName: 'Importado',
-      width: 150,
-      renderCell: params => (
-        params.value == 1 ? "SIM" : ""
-      )
-    },
-    {
-      field: 'plates',
-      headerName: 'Placa',
-      width: 150
-    },
-    {
-      field: 'selling_price',
-      headerName: 'Preço de venda',
-      width: 150,
-      renderCell: params => params.value ? 
-        params.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }):'',
-    },
-    
-    {
-      field: 'selling_date',
-      headerName: 'Data de venda',
+      field: 'birth_date',
+      headerName: 'Data nasc.',
       width: 150,
       valueFormatter: value => {
         if(value) {
@@ -74,7 +37,22 @@ export default function CarsList() {
         else return ''
       }
     },
-    
+    {
+      field: 'municipality',
+      headerName: 'Município/UF',
+      width: 250,
+      valueGetter: (value, row) => row.municipality + '/' + row.state
+    },
+    {
+      field: 'phone',
+      headerName: 'Celular',
+      width: 150
+    },
+    {
+      field: 'email',
+      headerName: 'E-mail',
+      width: 250
+    },
     {
       field: '_actions',
       headerName: 'Ações',
@@ -100,10 +78,10 @@ export default function CarsList() {
   ];
 
   const [state, setState] = React.useState({
-    cars: []
+    customers: []
   })
   const {
-    cars
+    customers
   } = state
 
   // Função que é chamada pelo useEffect() para carregar os dados
@@ -111,11 +89,11 @@ export default function CarsList() {
   async function loadData() {
     feedbackWait(true)
     try {
-      const response = await fetch(import.meta.env.VITE_API_BASE + '/cars')
+      const response = await fetch(import.meta.env.VITE_API_BASE + '/customers')
       const data = await response.json()
 
       // Atualiza a variável de estado com os dados obtidos
-      setState({ ...state, cars: data })
+      setState({ ...state, customers: data })
     }
     catch(error) {
       console.error(error)
@@ -136,7 +114,7 @@ export default function CarsList() {
       feedbackWait(true)
       try {
         // Envia a requisição para a exclusão do registro
-        await fetch(import.meta.env.VITE_API_BASE + `/cars/${id}`,
+        await fetch(import.meta.env.VITE_API_BASE + `/customers/${id}`,
           { method: 'DELETE' }
         )
         // Atualiza os dados do datagrid
@@ -155,7 +133,7 @@ export default function CarsList() {
 
   return <>
     <Typography variant="h1" gutterBottom>
-      Listagem de Veículos
+      Listagem de clientes
     </Typography>
 
     <Box sx={{
@@ -170,14 +148,14 @@ export default function CarsList() {
           color="secondary"
           startIcon={ <AddCircleIcon /> }
         >
-          Novo Veículo
+          Novo cliente
         </Button>
       </Link>
     </Box>
 
     <Paper sx={{ height: 400, width: '100%' }} elevation={10}>
       <DataGrid
-        rows={cars}
+        rows={customers}
         columns={columns}
         initialState={{
           pagination: {

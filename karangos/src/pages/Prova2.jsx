@@ -1,41 +1,36 @@
-import React from 'react'
-import Typography from '@mui/material/Typography'
+import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box'
-import { useParams } from 'react-router-dom'
-import { feedbackWait, feedbackNotify } from '../ui/Feedback'
+import React from 'react'
 
 export default function Prova2() {
-  const { id } = useParams()
-  const [prova2, setProva2] = React.useState(null)
+  const [state, setState] = React.useState('')
 
-  React.useEffect(() => {
-    if (id) loadData()
-  }, [id])
-
+  // Função que é chamada pelo useEffect() para carregar os dados
+  // do back-end quando o componente for exibido
   async function loadData() {
-    feedbackWait(true)
     try {
-      const response = await fetch(
-        import.meta.env.VITE_API_BASE + `/sobre/1${id}`
-      )
-      const result = await response.json()
-      setProva2(result)
-    } catch (error) {
+      const response = await fetch(import.meta.env.VITE_API_BASE + '/sobre/1')
+      const data = await response.json()
+
+      // Atualiza a variável de estado com os dados obtidos
+      setState(data.info)
+    }
+    catch(error) {
       console.error(error)
-      feedbackNotify('ERRO: ' + error.message)
-    } finally {
-      feedbackWait(false)
     }
   }
 
-  return (
-    <>
-      <Typography variant="h1" gutterBottom>
-        Sobre o projeto Karangos
-      </Typography>
-      <Box>
-        {prova2}
-      </Box>
-    </>
-  )
+  // useEffect() que será executado apenas quando o componente for carregado
+  React.useEffect(() => {
+    loadData()
+  }, [])
+
+  return <>
+    <Typography variant="h1">
+      Sobre o Projeto Karangos
+    </Typography>
+    <Box>
+      {state}
+    </Box>
+  </>
 }
