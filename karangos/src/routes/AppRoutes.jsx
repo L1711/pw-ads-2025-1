@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import Homepage from '../pages/Homepage'
 import Prova2 from '../pages/Prova2'
+import Prova from '../pages/Prova'
 
 import CustomersList from '../pages/customers/CustomersList'
 import CustomersForm from '../pages/customers/CustomersForm'
@@ -24,6 +25,6 @@ export default function AppRoutes() {
     <Route path="/cars/:id" element={ <CarsForm /> } />
 
     <Route path="/prova/2" element={ <Prova2 />} />
-
+    <Route path="/prova" element={ <Prova />} />
   </Routes>
 }

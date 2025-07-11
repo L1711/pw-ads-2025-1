@@ -83,15 +83,26 @@ export default function MainMenu() {
           Cadastro de Veículos
         </MenuItem>
 
-      </Menu>
 
-      <MenuItem 
+        <MenuItem 
           onClick={handleClose}
           component={Link}
           to="/prova/2"
         >
           Prova 2
         </MenuItem>
+
+        <MenuItem 
+          onClick={handleClose}
+          component={Link}
+          to="/prova"
+        >
+          Prova 
+        </MenuItem>
+
+      </Menu>
+
+
 
     </div>
   );
